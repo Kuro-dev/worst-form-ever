@@ -3,16 +3,16 @@
     <label :for="id" class="input-label">{{ label }}</label>
     <input
         :id="id"
-        :type="type"
-        :placeholder="placeholder"
         v-model="inputValue"
+        :placeholder="placeholder"
+        :type="type"
         class="styled-input"
     />
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue';
+<script lang="ts" setup>
+import {ref, watch} from 'vue';
 
 const props = defineProps<{
   id: string;

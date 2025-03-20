@@ -1,11 +1,17 @@
 <template>
-  <form class="styled-form" @submit.prevent="handleSubmit">
+  <form ref="form" class="styled-form" @submit.prevent="handleSubmit">
     <slot></slot>
-    <button type="submit" class="submit-button">Submit</button>
+    <button :disabled="!valid" class="submit-button" type="submit">Submit</button>
   </form>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
+import {computed, ref} from "vue";
+
+const form = ref<HTMLFormElement>();
+
+const valid = computed(() => form.value?.valid);
+
 const handleSubmit = (): void => {
   console.log("Form submitted");
 };
